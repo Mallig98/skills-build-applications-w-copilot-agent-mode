@@ -1,6 +1,5 @@
 import { Router } from 'express';
 import mongoose from 'mongoose';
-import { apiBaseUrl } from '../config/api.js';
 import Activity from '../models/Activity.js';
 import Leaderboard from '../models/Leaderboard.js';
 import Team from '../models/Team.js';
@@ -17,13 +16,6 @@ router.use(databaseRoutes, (_request, response, next) => {
   }
 
   next();
-});
-
-router.get('/api/', (_request, response) => {
-  response.json({
-    baseUrl: apiBaseUrl,
-    endpoints: ['users', 'teams', 'activities', 'leaderboard', 'workouts'],
-  });
 });
 
 router.get('/api/users/', async (_request, response) => {
