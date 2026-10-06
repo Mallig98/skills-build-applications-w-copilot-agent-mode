@@ -1,0 +1,233 @@
+#root {
+  min-height: 100vh;
+}
+
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.app-header {
+  background: #123a4a;
+  color: #fff;
+  box-shadow: 0 3px 16px rgb(18 58 74 / 12%);
+}
+
+.app-header .container {
+  display: flex;
+  min-height: 76px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 750;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.brand:hover {
+  color: #d7f5e9;
+}
+
+.brand-mark {
+  display: grid;
+  width: 2.25rem;
+  height: 2.25rem;
+  place-items: center;
+  border-radius: 0.8rem;
+  background: #8ed6b4;
+  color: #123a4a;
+  font-weight: 800;
+}
+
+.app-nav {
+  gap: 0.25rem;
+}
+
+.app-nav .nav-link {
+  color: #d8e8e9;
+  font-size: 0.92rem;
+}
+
+.app-nav .nav-link:hover,
+.app-nav .nav-link.active {
+  background: #e4f5ec;
+  color: #123a4a;
+}
+
+.app-content {
+  flex: 1;
+  padding-top: 3rem;
+  padding-bottom: 4rem;
+}
+
+.page-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.eyebrow {
+  margin-bottom: 0.5rem;
+  color: #41866b;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+}
+
+.page-heading h1 {
+  margin: 0;
+  color: #123a4a;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 750;
+  letter-spacing: -0.045em;
+}
+
+.page-description {
+  margin-top: 0.65rem;
+  color: #667985;
+}
+
+.item-count {
+  padding: 0.55rem 0.8rem;
+  color: #35634f !important;
+  white-space: nowrap;
+}
+
+.data-card {
+  overflow: hidden;
+  border: 1px solid #e2eaec;
+  border-radius: 1rem;
+  box-shadow: 0 5px 20px rgb(26 67 78 / 5%);
+}
+
+.data-card .card-body {
+  padding: 1.35rem;
+}
+
+.data-card .card-title {
+  margin: 0 0 0.35rem;
+  color: #193d4b;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.card-subtitle {
+  color: #75858d;
+  font-size: 0.9rem;
+}
+
+.detail-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+  margin: 1.25rem 0 0;
+}
+
+.detail-list dt {
+  color: #819098;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.detail-list dd {
+  margin: 0.1rem 0 0;
+  color: #244654;
+  font-weight: 650;
+}
+
+.rank-badge,
+.avatar {
+  display: grid;
+  width: 3rem;
+  height: 3rem;
+  flex: 0 0 3rem;
+  place-items: center;
+  border-radius: 50%;
+  background: #e3f4ec;
+  color: #28694e;
+  font-weight: 800;
+}
+
+.points-total {
+  color: #28694e;
+  font-size: 1.25rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.points-total small {
+  font-size: 0.75rem;
+}
+
+.leaderboard-period {
+  margin-top: 0.45rem;
+  color: #8a989e;
+  font-size: 0.78rem;
+}
+
+.member-list,
+.exercise-list {
+  margin: 1rem 0 0;
+  padding-left: 1.2rem;
+  color: #435b65;
+  font-size: 0.9rem;
+}
+
+.empty-state {
+  padding: 3.5rem 1.5rem;
+  border: 1px dashed #cbd9dc;
+  border-radius: 1rem;
+  background: #fff;
+  color: #6b7e86;
+  text-align: center;
+}
+
+.empty-state h2 {
+  margin-bottom: 0.5rem;
+  color: #244654;
+  font-size: 1.2rem;
+}
+
+.app-footer {
+  padding: 1.25rem 0;
+  border-top: 1px solid #e2eaec;
+  color: #788a91;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+@media (max-width: 767.98px) {
+  .app-header .container {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .app-nav {
+    width: 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 0.2rem;
+  }
+
+  .app-nav .nav-link {
+    white-space: nowrap;
+  }
+
+  .app-content {
+    padding-top: 2rem;
+  }
+}
