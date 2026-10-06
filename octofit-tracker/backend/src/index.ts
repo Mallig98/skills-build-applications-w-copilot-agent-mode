@@ -5,6 +5,7 @@ import apiRouter from './routes/index.js';
 
 const app = express();
 const port = 8000;
+const databaseRetryDelayMs = 5000;
 
 app.use(express.json());
 app.use(apiRouter);
@@ -19,10 +20,22 @@ app.use((error: unknown, _request: express.Request, response: express.Response, 
 });
 
 async function startServer(): Promise<void> {
-  await connectDatabase();
   app.listen(port, () => {
     console.log(`OctoFit API available at ${apiBaseUrl}`);
   });
+
+  void connectWithRetry();
+}
+
+async function connectWithRetry(): Promise<void> {
+  try {
+    await connectDatabase();
+  } catch (error) {
+    const reason = error instanceof Error ? error.message : String(error);
+    console.error(`Unable to connect to MongoDB: ${reason}. Retrying in ${databaseRetryDelayMs} ms.`);
+    const retryTimer = setTimeout(() => void connectWithRetry(), databaseRetryDelayMs);
+    retryTimer.unref();
+  }
 }
 
 startServer().catch((error: unknown) => {

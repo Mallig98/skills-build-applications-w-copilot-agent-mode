@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import mongoose from 'mongoose';
 import { apiBaseUrl } from '../config/api.js';
 import Activity from '../models/Activity.js';
 import Leaderboard from '../models/Leaderboard.js';
@@ -7,6 +8,16 @@ import User from '../models/User.js';
 import Workout from '../models/Workout.js';
 
 const router = Router();
+const databaseRoutes = ['/api/users', '/api/teams', '/api/activities', '/api/leaderboard', '/api/workouts'];
+
+router.use(databaseRoutes, (_request, response, next) => {
+  if (mongoose.connection.readyState !== 1) {
+    response.status(503).json({ error: 'Database is unavailable. Please try again later.' });
+    return;
+  }
+
+  next();
+});
 
 router.get('/api/', (_request, response) => {
   response.json({
